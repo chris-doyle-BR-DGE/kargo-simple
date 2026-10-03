@@ -10,7 +10,7 @@ spec:
   - name: branch
     value: main
   - name: image
-    value: ghcr.io/chris-doyle-BR-DGE/guestbook
+    value: ghcr.io/chris-doyle-br-dge/guestbook
   - name: openpr
     value: "false"
   steps:
@@ -56,16 +56,15 @@ spec:
     if: ${{ vars.openpr == 'true' }}
     config:
       repoURL: ${{ vars.repoURL }}
-      createTargetBranch: true
       sourceBranch: ${{ task.outputs.push.branch }}
       targetBranch: ${{ vars.branch }}
   # Wait for the pull request to be merged.
   - uses: git-wait-for-pr
     as: wait-for-pr
-    if: ${{ vars.openpr == 'true' }}
+    if: ${{ vars.openpr == 'true' && task.outputs['open-pr'] != nil }}
     config:
       repoURL: ${{ vars.repoURL }}
-      prNumber: ${{ task.outputs['open-pr'].prNumber }}
+      prNumber: ${{ task.outputs['open-pr'].pr.id }}
 
   # If you have an Argo CD Application that should be synced after the Git
   # repository is updated, uncomment the following lines and specify the

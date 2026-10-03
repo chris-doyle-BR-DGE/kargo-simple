@@ -4,5 +4,5 @@ resources:
 - ../../base
 namespace: guestbook-simple-staging
 images:
-- name: ghcr.io/chris-doyle-BR-DGE/guestbook
+- name: ghcr.io/chris-doyle-br-dge/guestbook
   newTag: v0.0.1

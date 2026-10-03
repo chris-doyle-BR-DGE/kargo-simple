@@ -6,5 +6,5 @@ metadata:
 spec:
   subscriptions:
   - image:
-      repoURL: ghcr.io/chris-doyle-BR-DGE/guestbook
+      repoURL: ghcr.io/chris-doyle-br-dge/guestbook
       imageSelectionStrategy: SemVer
